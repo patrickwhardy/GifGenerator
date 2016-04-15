@@ -5,5 +5,6 @@ class GifsController < ApplicationController
 
   def show
     @gif = Gif.find(params[:id])
+    @category = Category.find(@gif.category_id)
   end
 end

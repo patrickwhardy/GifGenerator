@@ -11,12 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414201118) do
+ActiveRecord::Schema.define(version: 20160415033446) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "gifs", force: :cascade do |t|
     t.string   "image_path"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+  end
+
+  add_index "gifs", ["category_id"], name: "index_gifs_on_category_id"
+
+  create_table "gifs_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "gif_id",  null: false
+  end
+
+  add_index "gifs_users", ["gif_id"], name: "index_gifs_users_on_gif_id"
+  add_index "gifs_users", ["user_id"], name: "index_gifs_users_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.integer  "role"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

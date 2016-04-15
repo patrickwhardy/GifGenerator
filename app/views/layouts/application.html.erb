@@ -2,13 +2,22 @@
 <html>
 <head>
   <title>GifGenerator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="logout">
+    <% if session[:user_id] %>
+    <%= link_to "Logout", logout_path, method: "delete" %>
+    <% else %>
+      <%= link_to "Login", login_path %>
+    <% end %>
+  </div>
+  <% flash.each do |type, message| %>
+    <%= content_tag :div, message, class: "flash_#{type}" %>
+  <% end %>
+  <%= yield %>
 </body>
 </html>
