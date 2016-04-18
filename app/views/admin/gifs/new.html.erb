@@ -1,0 +1,5 @@
+<h1>Create a New Gif</h1>
+<%= form_for [:admin, @category] do |f| %>
+<%= f.text_field :title, placeholder: "Category" %>
+<%= f.submit "Create GIF!!!" %>
+<% end %>

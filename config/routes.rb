@@ -6,6 +6,14 @@ Rails.application.routes.draw do
     resources :gifs, only: [:index]
   end
 
+  namespace :admin do
+    resources :categories, only: [:new, :create]
+  end
+
+  namespace :user do
+    resources :gifs, only: [:new, :create, :index]
+  end
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"

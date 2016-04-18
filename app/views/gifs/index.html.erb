@@ -1,0 +1,8 @@
+<h1>Welcom to Giffy World</h1>
+
+<% @gifs.each do |gif| %>
+  <div class="well"><%= link_to(image_tag(gif.image_path, alt: gif.image_path), gif_path(gif)) %>
+    <button class="btn btn-devault">
+      <a href='new_user_gif'>Save to Favorites</a></button>
+  </div>
+<% end %>

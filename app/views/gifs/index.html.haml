@@ -1,4 +1,0 @@
-%h1 All Gifs
-.row
-  - @gifs.each do |gif|
-    .small.3.columns= link_to(image_tag(gif.image_path, alt: gif.image_path), gif_path(gif))
